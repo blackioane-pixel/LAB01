@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS public.authors
+(
+    " author_id " serial NOT NULL,
+    last_name character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    first_name character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    country character varying(60) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT authors_pkey PRIMARY KEY (" author_id ")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.authors
+    OWNER to postgres;
