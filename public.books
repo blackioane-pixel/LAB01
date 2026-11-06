@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS public.books
+(
+    book_code integer NOT NULL,
+    author_code integer NOT NULL,
+    title character varying(200) COLLATE pg_catalog."default" NOT NULL,
+    year smallint NOT NULL,
+    pages smallint NOT NULL,
+    publisher character varying(150) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT books_pkey PRIMARY KEY (book_code),
+    CONSTRAINT bok FOREIGN KEY (author_code)
+        REFERENCES public.authors (" author_id ") MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.books
+    OWNER to postgres;
