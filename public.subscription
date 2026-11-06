@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS public.subscription
+(
+    sub_id serial NOT NULL,
+    reader_code integer NOT NULL,
+    " book_id" integer NOT NULL,
+    issue_date date NOT NULL DEFAULT CURRENT_DATE,
+    term_days integer NOT NULL,
+    " returned " boolean NOT NULL,
+    CONSTRAINT subscription_pkey PRIMARY KEY (sub_id),
+    CONSTRAINT subscription FOREIGN KEY (" book_id")
+        REFERENCES public.books (book_code) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.subscription
+    OWNER to postgres;
